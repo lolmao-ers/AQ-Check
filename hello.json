@@ -1,0 +1,227 @@
+{
+    "index_name": "3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69",
+    "title": "Real time Air Quality Index from various locations",
+    "desc": "Real time Air Quality Index from various locations",
+    "org_type": "Central",
+    "org": [
+        "Ministry of Environment, Forest and Climate Change",
+        "Central Pollution Control Board"
+    ],
+    "sector": [
+        "Environment and Forest",
+        "Vehicular Air Pollution",
+        "Residential Air Pollution",
+        "Industrial Air Pollution"
+    ],
+    "source": "data.gov.in",
+    "catalog_uuid": "a3e7afc6-b799-4ede-b143-8e074b27e062",
+    "visualizable": "0",
+    "active": 1,
+    "created": "1543320551",
+    "updated": 1638984796,
+    "created_date": "2018-11-27T17:39:11Z",
+    "updated_date": "2021-12-08T23:03:16Z",
+    "external_ws": 0,
+    "external_ws_url": "",
+    "target_bucket": {
+        "index": "aqi_archieve",
+        "type": "a3e7afc6-b799-4ede-b143-8e074b27e062",
+        "field": "3b01bcb8-0b14-4abf-b6f2-c1bfd384ba69"
+    },
+    "field": [
+        {
+            "id": "id",
+            "name": "id",
+            "type": "double"
+        },
+        {
+            "id": "country",
+            "name": "country",
+            "type": "keyword"
+        },
+        {
+            "id": "state",
+            "name": "state",
+            "type": "keyword"
+        },
+        {
+            "id": "city",
+            "name": "city",
+            "type": "keyword"
+        },
+        {
+            "id": "station",
+            "name": "station",
+            "type": "keyword"
+        },
+        {
+            "id": "last_update",
+            "name": "last_update",
+            "type": "date"
+        },
+        {
+            "id": "pollutant_id",
+            "name": "pollutant_id",
+            "type": "keyword"
+        },
+        {
+            "id": "pollutant_min",
+            "name": "pollutant_min",
+            "type": "double"
+        },
+        {
+            "id": "pollutant_max",
+            "name": "pollutant_max",
+            "type": "double"
+        },
+        {
+            "id": "pollutant_avg",
+            "name": "pollutant_avg",
+            "type": "double"
+        },
+        {
+            "id": "pollutant_unit",
+            "name": "pollutant_unit",
+            "type": "keyword"
+        }
+    ],
+    "message": "Resource lists",
+    "version": "2.2.0",
+    "status": "ok",
+    "total": 2015,
+    "count": 10,
+    "limit": 10,
+    "offset": "1000",
+    "records": [
+        {
+            "id": "1001",
+            "country": "India",
+            "state": "Kerala",
+            "city": "Kollam",
+            "station": "Polayathode, Kollam - Kerala PCB",
+            "last_update": "08-12-2021 10:00:00",
+            "pollutant_id": "PM10",
+            "pollutant_min": "85",
+            "pollutant_max": "153",
+            "pollutant_avg": "116",
+            "pollutant_unit": "NA"
+        },
+        {
+            "id": "1002",
+            "country": "India",
+            "state": "Kerala",
+            "city": "Kollam",
+            "station": "Polayathode, Kollam - Kerala PCB",
+            "last_update": "08-12-2021 10:00:00",
+            "pollutant_id": "NO2",
+            "pollutant_min": "16",
+            "pollutant_max": "109",
+            "pollutant_avg": "51",
+            "pollutant_unit": "NA"
+        },
+        {
+            "id": "1003",
+            "country": "India",
+            "state": "Kerala",
+            "city": "Kollam",
+            "station": "Polayathode, Kollam - Kerala PCB",
+            "last_update": "08-12-2021 10:00:00",
+            "pollutant_id": "NH3",
+            "pollutant_min": "1",
+            "pollutant_max": "3",
+            "pollutant_avg": "1",
+            "pollutant_unit": "NA"
+        },
+        {
+            "id": "1004",
+            "country": "India",
+            "state": "Kerala",
+            "city": "Kollam",
+            "station": "Polayathode, Kollam - Kerala PCB",
+            "last_update": "08-12-2021 10:00:00",
+            "pollutant_id": "SO2",
+            "pollutant_min": "1",
+            "pollutant_max": "5",
+            "pollutant_avg": "3",
+            "pollutant_unit": "NA"
+        },
+        {
+            "id": "1005",
+            "country": "India",
+            "state": "Kerala",
+            "city": "Kollam",
+            "station": "Polayathode, Kollam - Kerala PCB",
+            "last_update": "08-12-2021 10:00:00",
+            "pollutant_id": "CO",
+            "pollutant_min": "48",
+            "pollutant_max": "58",
+            "pollutant_avg": "49",
+            "pollutant_unit": "NA"
+        },
+        {
+            "id": "1006",
+            "country": "India",
+            "state": "Kerala",
+            "city": "Kollam",
+            "station": "Polayathode, Kollam - Kerala PCB",
+            "last_update": "08-12-2021 10:00:00",
+            "pollutant_id": "OZONE",
+            "pollutant_min": "14",
+            "pollutant_max": "59",
+            "pollutant_avg": "40",
+            "pollutant_unit": "NA"
+        },
+        {
+            "id": "1007",
+            "country": "India",
+            "state": "Kerala",
+            "city": "Kozhikode",
+            "station": "Palayam, Kozhikode - Kerala PCB",
+            "last_update": "08-12-2021 10:00:00",
+            "pollutant_id": "PM2.5",
+            "pollutant_min": "26",
+            "pollutant_max": "62",
+            "pollutant_avg": "37",
+            "pollutant_unit": "NA"
+        },
+        {
+            "id": "1008",
+            "country": "India",
+            "state": "Kerala",
+            "city": "Kozhikode",
+            "station": "Palayam, Kozhikode - Kerala PCB",
+            "last_update": "08-12-2021 10:00:00",
+            "pollutant_id": "PM10",
+            "pollutant_min": "35",
+            "pollutant_max": "83",
+            "pollutant_avg": "47",
+            "pollutant_unit": "NA"
+        },
+        {
+            "id": "1009",
+            "country": "India",
+            "state": "Kerala",
+            "city": "Kozhikode",
+            "station": "Palayam, Kozhikode - Kerala PCB",
+            "last_update": "08-12-2021 10:00:00",
+            "pollutant_id": "NO2",
+            "pollutant_min": "12",
+            "pollutant_max": "55",
+            "pollutant_avg": "33",
+            "pollutant_unit": "NA"
+        },
+        {
+            "id": "1010",
+            "country": "India",
+            "state": "Kerala",
+            "city": "Kozhikode",
+            "station": "Palayam, Kozhikode - Kerala PCB",
+            "last_update": "08-12-2021 10:00:00",
+            "pollutant_id": "NH3",
+            "pollutant_min": "1",
+            "pollutant_max": "1",
+            "pollutant_avg": "1",
+            "pollutant_unit": "NA"
+        }
+    ]
+}
