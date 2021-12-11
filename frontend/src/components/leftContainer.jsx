@@ -30,11 +30,6 @@ export default class LeftContainer extends React.Component
 	constructor(props)
 	{
 		super(props);
-		this.state = {
-			title: DEFAULT_TITLE,
-		};
-		this.openCityData = this.openCityData.bind(this);
-		this.openCityList = this.openCityList.bind(this);
 	}
 
 	openCityData(cityName)
@@ -50,7 +45,6 @@ export default class LeftContainer extends React.Component
 		this.setState({
 			title: DEFAULT_TITLE,
 		});
-		console.log("hello");
 	}
 
 	render()

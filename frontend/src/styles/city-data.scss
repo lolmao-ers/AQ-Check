@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
     width: calc(100% - 40px);
     height: 100%;
     margin-top: 16px;
@@ -12,15 +13,17 @@
 }
 
 #city-data-table {
-    margin-top: 5em;
+    margin-bottom: 10%;
     align-items: center;
     justify-content: space-between;
+    width: 90%;
+    height: 50%;
 }
 
 #city-data-table td,th {
     font-family: Karla;
     text-transform: uppercase;
-    padding: 8px;
+    // padding: 10%;
     text-align: center;
     border-radius: 8px;
 color: rgb(222, 222, 223);

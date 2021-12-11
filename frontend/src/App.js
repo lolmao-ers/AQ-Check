@@ -10,6 +10,12 @@ import Example from "./components/map";
 // const geoUrl =
 //   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
 
+// this.state = {
+//   title: DEFAULT_TITLE,
+// };
+// this.openCityData = this.openCityData.bind(this);
+// this.openCityList = this.openCityList.bind(this);
+// 	}
 
 function App()
 {
@@ -17,7 +23,7 @@ function App()
     <div className="App">
       <LeftContainer>
       </LeftContainer>
-<Example/>
+      <Example/>
     </div>
   );
 }
