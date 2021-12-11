@@ -5,14 +5,6 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 import "../styles/city-list.css";
 
-// dummy
-const CITY_LIST_TEST_DATA = {
-	Wakanda: 0,
-	Delhi: 500,
-	Latveria: 350,
-	Mirzapur: 200,
-};
-
 const CITY_LIST_TEST_DATA1 = [
 	{
 		cityName: "Wakanda",

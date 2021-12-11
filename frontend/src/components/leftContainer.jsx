@@ -6,7 +6,6 @@ import "../styles/box-container.css";
 import "../styles/left-container.scss";
 import CityData from "./cityData";
 import CityList from "./cityList";
-// import SearchBar from "./searchBar";
 
 const Title = (props) =>
 {
@@ -25,43 +24,22 @@ const BackButton = ({ onClick, className }) =>
 
 const DEFAULT_TITLE = "AQI Levels";
 
-export default class LeftContainer extends React.Component
-{
-	constructor(props)
-	{
-		super(props);
-	}
-
-	openCityData(cityName)
-	{
-		console.log(cityName)
-		this.setState({
-			title: cityName,
-		});
-	}
-
-	openCityList()
-	{
-		this.setState({
-			title: DEFAULT_TITLE,
-		});
-	}
-
+export default class LeftContainer extends React.Component {
 	render()
 	{
 		return (
 			<div id="left-container" className="box-container">
 				<div id="left-container-header">
-					<BackButton className={this.state.title === DEFAULT_TITLE ? "hide" : ""} onClick={this.openCityList} />
-					<Title title={this.state.title} />
+					<BackButton className={this.props.title === DEFAULT_TITLE ? "hide" : ""} onClick={this.props.openCityList} />
+					<Title title={this.props.title} />
 					<div className="header-buttons"></div>	{/* <SearchBar/> */}
 				</div>
 				<hr />
 
-				{this.state.title === DEFAULT_TITLE ? (
-					<CityList openCityData={this.openCityData} />
+				{this.props.title === DEFAULT_TITLE ? (
+					<CityList openCityData={this.props.openCityData} />
 				) : (
-					<CityData cityName={this.state.title} />
+					<CityData cityName={this.props.title} />
 				)}
 			</div>
 		);

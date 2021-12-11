@@ -1,31 +1,43 @@
-import { ComposableMap, Geographies, Geography } from "react-simple-maps";
-
-import logo from './logo.svg';
 import './styles/App.css';
+import React from 'react';
 
 import LeftContainer from './components/leftContainer';
-import BottomContainer from './components/bottomContainer';
 import Example from "./components/map";
 
-// const geoUrl =
-//   "https://raw.githubusercontent.com/zcreativelabs/react-simple-maps/master/topojson-maps/world-110m.json";
+const DEFAULT_TITLE = "AQI Levels";
 
-// this.state = {
-//   title: DEFAULT_TITLE,
-// };
-// this.openCityData = this.openCityData.bind(this);
-// this.openCityList = this.openCityList.bind(this);
-// 	}
+class App extends React.Component {
+  
+	constructor(props) {
+		super(props);
+		this.state = {
+				title: DEFAULT_TITLE,
+		};
+		this.openCityData = this.openCityData.bind(this);
+		this.openCityList = this.openCityList.bind(this);
+	}
 
-function App()
-{
-  return (
-    <div className="App">
-      <LeftContainer>
-      </LeftContainer>
-      <Example/>
-    </div>
-  );
+	openCityData(cityName) {
+		console.log(cityName)
+		this.setState({
+			title: cityName,
+		});
+	}
+
+	openCityList() {
+		this.setState({
+			title: DEFAULT_TITLE,
+		});
+	}
+
+  	render() {
+    	return (
+			<div className="App">
+				<LeftContainer title = {this.state.title} openCityData = {this.openCityData} openCityList = {this.openCityList}/>
+				<Example openCityData = {this.openCityData} />
+			</div>
+		)
+	}
 }
 
 export default App;
