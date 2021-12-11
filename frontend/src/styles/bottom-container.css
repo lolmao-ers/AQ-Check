@@ -1,0 +1,10 @@
+#bottom-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 56vw;
+    height: 24vh;
+    margin: 4vh 2vw;
+    border-radius: 8px;
+    background-color: rgb(25, 27, 35);
+}

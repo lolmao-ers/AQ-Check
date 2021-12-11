@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700&display=swap');
+
+
+#city-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: calc(100% - 40px);
+    height: 100%;
+    margin-top: 16px;
+    /* border: 1px white solid; */
+}
+
+#city-data-table {
+    margin-top: 5em;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#city-data-table td,th {
+    font-family: Karla;
+    text-transform: uppercase;
+    padding: 8px;
+    text-align: center;
+    border-radius: 8px;
+color: rgb(222, 222, 223);
+transition: 0.5s all ease-out;
+    // border: solid 1px white;
+}
+
+
+#city-data-table th {
+    background-color: rgb(44, 46, 64) ;
+    
+}
+#city-data-table th:hover {
+
+transition: 0.2s all ease-out;
+background-color: rgb(59, 63, 89);
+}
+
+#city-data-table td {
+    background-color: rgb(34, 36, 51) ;
+
+}
+#city-data-table td:hover {
+
+transition: 0.2s all ease-out;
+background-color: rgb(59, 63, 89);
+}

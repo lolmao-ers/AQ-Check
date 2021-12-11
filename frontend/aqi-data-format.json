@@ -1,0 +1,38 @@
+{
+    "city-list": [
+        {
+            "city-name": "wakanda",
+            "aqi-score": 0
+        },
+        {
+            "city-name": "delhi",
+            "aqi-score": 500
+        },
+        {
+            "city-name": "latveria",
+            "aqi-score": 300
+        },
+        {
+            "city-name": "mirzapur",
+            "aqi-score": 200
+        }
+    ]
+},
+
+{
+    "aqi-score": 200,
+    "aqi-data": [
+        {
+            "name": "pm2.5",
+            "min": 0,
+            "avg": 5,
+            "max": 10
+        },
+        {
+            "name": : "pm5",
+            "min": 0,
+            "avg": 5,
+            "max": 10
+        }
+    ]
+}

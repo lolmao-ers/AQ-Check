@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Barlow:wght@500&display=swap');
+
+#left-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    width: 38vw;
+    height: 92vh;
+    margin: 4vh 2vw;
+    border-radius: 8px;
+    background-color: rgb(25, 27, 35);
+}
+
+#left-container-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 4em;
+    width: calc(100% - 1em);
+}
+
+#title {
+    color: rgb(222, 222, 223);
+    font-family: Barlow;
+    font-size: 1.6em;
+    font-weight: bolder;
+}
+
+hr {
+    width: 32vw;
+    background-color: rgb(80, 83, 100);
+    border-color: rgb(80, 83, 100);
+    margin-top: 0;
+}
+
+.header-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 8px;
+    color: rgb(222, 222, 223);
+    font-size: 1em;
+    transition: 0.5s all ease-out;
+
+}
+
+#back-button:hover{
+    background-color: rgb(56, 60, 78);
+    transition: 0.2s all ease-out;
+    cursor: pointer;
+}
+
+.hide {
+    opacity: 0;
+    cursor: default !important;
+}
