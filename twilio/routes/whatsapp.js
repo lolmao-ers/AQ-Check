@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const twilio = require('twilio');
 require('dotenv').config();
+const User = require('../model')
 const request = require('request');
 const accountSid = process.env.ACCOUNT_SID;
 const authToken = process.env.AUTH_TOKEN;
@@ -20,6 +21,13 @@ router.post('/recieve',  async (req, res) => {
      const name = req.body.ProfileName || 'Anonymous';
      const messageBody = req.body.Body;
      const whatsappNumber = req.body.From;
+
+     const user = new User({
+            name,
+            phone: whatsappNumber,
+     });
+
+     await user.save();
      
      if(messageBody.toLowerCase() === 'hello') {
          twiml.message(`Hello ${name}!, To get your air quality, send your location.`);
