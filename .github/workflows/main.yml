@@ -1,0 +1,41 @@
+  
+name: CI
+
+on:
+  push:
+    branches: [ kubernetes-configuration ]
+  pull_request:
+    branches: [ kubernetes-configuration ]
+    
+env:
+  DATREE_TOKEN: ${{ secrets.DATREE_TOKEN }} 
+
+jobs:
+  k8s-policy-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Datree
+        run: curl https://get.datree.io | /bin/bash
+        
+      - name: configmap
+        run: datree test ~/configmap.yaml
+
+      - name: mongo-service
+        run: datree test ~/mongodb-service.yaml
+
+      - name: node-backend
+        run: datree test ~/node-backend.yaml
+
+      - name: react
+        run: datree test ~/react.yaml
+        
+      - name: redis-service
+        run: datree test ~/redis-service.yaml
+
+      - name: twilio
+        run: datree test ~/twilio.yaml
+         
