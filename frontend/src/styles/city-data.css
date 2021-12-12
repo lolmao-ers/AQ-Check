@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700&display=swap");
+#city-data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: calc(100% - 40px);
+  height: 100%;
+  margin-top: 16px;
+  /* border: 1px white solid; */
+}
+
+#city-data-table {
+  margin-bottom: 10%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 90%;
+  height: 50%;
+}
+
+#city-data-table td, th {
+  font-family: Karla;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 8px;
+  color: #dededf;
+  -webkit-transition: 0.5s all ease-out;
+  transition: 0.5s all ease-out;
+}
+
+#city-data-table th {
+  background-color: #2c2e40;
+}
+
+#city-data-table th:hover {
+  -webkit-transition: 0.2s all ease-out;
+  transition: 0.2s all ease-out;
+  background-color: #3b3f59;
+}
+
+#city-data-table td {
+  background-color: #222433;
+}
+
+#city-data-table td:hover {
+  -webkit-transition: 0.2s all ease-out;
+  transition: 0.2s all ease-out;
+  background-color: #3b3f59;
+}
+/*# sourceMappingURL=city-data.css.map */

@@ -25,11 +25,6 @@ const COLOR_RANGE = [
 
 const DEFAULT_COLOR = '#EEE';
 
-const getRandomInt = () =>
-{
-    return parseInt(Math.random() * 100);
-};
-
 const geographyStyle = {
     default: {
         outline: 'none'
@@ -91,32 +86,32 @@ const getHeatMapData = () =>
         { id: 'AP', state: 'Andhra Pradesh' },
         { id: 'AR', state: 'Arunachal Pradesh' },
         { id: 'AS', state: 'Assam' },
-        { id: 'BR', state: 'Bihar'},
-        { id: 'CT', state: 'Chhattisgarh'},
+        { id: 'BR', state: 'Bihar' },
+        { id: 'CT', state: 'Chhattisgarh' },
         { id: 'GA', state: 'Goa' },
         { id: 'GJ', state: 'Gujarat' },
         { id: 'HR', state: 'Haryana' },
-        { id: 'HP', state: 'Himachal Pradesh', value: 24 },
+        { id: 'HP', state: 'Himachal Pradesh'},
         { id: 'JH', state: 'Jharkhand' },
         { id: 'KA', state: 'Karnataka' },
-        { id: 'KL', state: 'Kerala',  },
+        { id: 'KL', state: 'Kerala', },
         { id: 'MP', state: 'Madhya Pradesh' },
-        { id: 'MH', state: 'Maharashtra', value: getRandomInt() },
-        { id: 'MN', state: 'Manipur', value: getRandomInt() },
-        { id: 'ML', state: 'Meghalaya', value: 59 },
-        { id: 'MZ', state: 'Mizoram', value: getRandomInt() },
-        { id: 'NL', state: 'Nagaland', value: 59 },
-        { id: 'OR', state: 'Odisha', value: 59 },
-        { id: 'PB', state: 'Punjab', value: getRandomInt() },
-        { id: 'RJ', state: 'Rajasthan', value: getRandomInt() },
-        { id: 'SK', state: 'Sikkim', value: getRandomInt() },
+        { id: 'MH', state: 'Maharashtra'},
+        { id: 'MN', state: 'Manipur'},
+        { id: 'ML', state: 'Meghalaya'},
+        { id: 'MZ', state: 'Mizoram'},
+        { id: 'NL', state: 'Nagaland'},
+        { id: 'OR', state: 'Odisha'},
+        { id: 'PB', state: 'Punjab'},
+        { id: 'RJ', state: 'Rajasthan'},
+        { id: 'SK', state: 'Sikkim'},
         { id: 'TN', state: 'Tamil Nadu' },
         { id: 'TG', state: 'Telangana' },
-        { id: 'TR', state: 'Tripura'},
-        { id: 'UT', state: 'Uttarakhand'},
+        { id: 'TR', state: 'Tripura' },
+        { id: 'UT', state: 'Uttarakhand' },
         { id: 'UP', state: 'Uttar Pradesh' },
         { id: 'WB', state: 'West Bengal' },
-        { id: 'WB', state: 'West Bengal'},
+        { id: 'WB', state: 'West Bengal' },
         { id: 'AN', state: 'Andaman and Nicobar Islands' },
         { id: 'CH', state: 'Chandigarh' },
         { id: 'DN', state: 'Dadra and Nagar Haveli' },
@@ -124,8 +119,8 @@ const getHeatMapData = () =>
         { id: 'DL', state: 'Delhi' },
         { id: 'JK', state: 'Jammu and Kashmir' },
         { id: 'LA', state: 'Ladakh' },
-        { id: 'LD', state: 'Lakshadweep'},
-        { id: 'PY', state: 'Puducherry'}
+        { id: 'LD', state: 'Lakshadweep' },
+        { id: 'PY', state: 'Puducherry' }
     ];
 };
 
@@ -138,26 +133,31 @@ export default function Example(props)
     //     .domain(props.cityList?.map(d => d.aqi))
     //     .range(COLOR_RANGE);
 
-    const onMouseEnter = (geo, current = { aqi: 'NA' }) => {
+    const onMouseEnter = (geo, current = { aqi: 'NA' }) =>
+    {
         return () =>
         {
-            setTooltipContent(`${geo.properties.name}: ${parseInt(current.aqi)*5}`);
+            setTooltipContent(`${geo.properties.name}: ${parseInt(current.aqi) * 5}`);
         };
     };
 
-    const onMouseLeave = () => {
+    const onMouseLeave = () =>
+    {
         setTooltipContent('');
     };
 
     var percentColors = [
         { pct: 0.0, color: { r: 0xff, g: 0x00, b: 0 } },
         { pct: 0.5, color: { r: 0xff, g: 0xff, b: 0 } },
-        { pct: 1.0, color: { r: 0x00, g: 0xff, b: 0 } } ];
-    
-    var getColorForPercentage = function(pct) {
+        { pct: 1.0, color: { r: 0x00, g: 0xff, b: 0 } }];
+
+    var getColorForPercentage = function (pct)
+    {
         // console.log(pct);
-        for (var i = 1; i < percentColors.length - 1; i++) {
-            if (pct < percentColors[i].pct) {
+        for (var i = 1; i < percentColors.length - 1; i++)
+        {
+            if (pct < percentColors[i].pct)
+            {
                 break;
             }
         }
@@ -176,35 +176,58 @@ export default function Example(props)
         // or output as hex if preferred
     };
 
-    function setColor (aqi) {
-        if (aqi === 'NA') {
-            return DEFAULT_COLOR;
+    function setColor(score)
+    {
+        const DONUT_METER_COLORS = [
+            "rgb(0, 176, 80)",
+            "rgb(146, 208, 80)",
+            "rgb(255, 255, 0)",
+            "rgb(255, 153, 0)",
+            "rgb(255, 0, 0)",
+            "rgb(192, 0, 0)",
+        ];
+
+        let meterColor;
+
+        if (score <= 50)
+        {
+            meterColor = DONUT_METER_COLORS[0];
         }
-        
-        if(aqi <= 50) {
-            return '#00ff00';
+        else if (score <= 100)
+        {
+            meterColor = DONUT_METER_COLORS[1];
+        }
+        else if (score <= 200)
+        {
+            meterColor = DONUT_METER_COLORS[2];
+        }
+        else if (score <= 300)
+        {
+            meterColor = DONUT_METER_COLORS[3];
+        }
+        else if (score <= 400)
+        {
+            meterColor = DONUT_METER_COLORS[4];
+        }
+        else
+        {
+            meterColor = DONUT_METER_COLORS[5];
         }
 
-        if(aqi <= 250) {
-            return '#FFA500';
-        }
-        
-        if(aqi <= 300) {
-            return '#FF0000';
-        }
 
-        return '#000000';
+        return meterColor;
     }
 
-    function stateClicked(stateData) {
-        if(!stateData) return;
+    function stateClicked(stateData)
+    {
+        if (!stateData) return;
         // console.log(stateData);
         // console.log('clicked')
         props.openCityData(stateData.state, stateData);
     }
 
     return (
-        <div id='map' style={{width:"60vw"}}>
+        <div id='map' style={{ width: "60vw" }}>
             <ReactTooltip>{tooltipContent}</ReactTooltip>
             <ComposableMap
                 projectionConfig={PROJECTION_CONFIG}
@@ -212,7 +235,7 @@ export default function Example(props)
                 width={300}
                 height={220}
                 data-tip=""
-                style={{maxWidth: "60vw", height:"99vh"}}
+                style={{ maxWidth: "60vw", height: "99vh" }}
             >
                 <Geographies geography={INDIA_TOPO_JSON}>
                     {({ geographies }) =>
@@ -224,11 +247,11 @@ export default function Example(props)
                                 <Geography
                                     key={geo.rsmKey}
                                     geography={geo}
-                                    fill={current ? getColorForPercentage(100 -current.aqi*5) : DEFAULT_COLOR}
+                                    fill={current ? setColor(current.aqi*5) : DEFAULT_COLOR}
                                     style={geographyStyle}
                                     onMouseEnter={onMouseEnter(geo, current)}
                                     onMouseLeave={onMouseLeave}
-                                    onClick={()=>stateClicked(current)}
+                                    onClick={() => stateClicked(current)}
                                 />
                             );
                         })
