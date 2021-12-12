@@ -57,10 +57,11 @@ body {
   text-align: center;
   font-family: Raleway;
   font-size: 4vw;
-  color: #8e58ff;
+  color: rgb(33, 33, 33);
   margin: 8px;
   background-color: #d8d8d8;
   padding: 0 36px;
+  border-radius: 8px;
 }
 
 hr.top {
@@ -105,5 +106,17 @@ hr.line-2 {
   font-family: cascadia code;
   font-size: 1.1em;
   color: #00caff;
+}
+
+#footer ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#footer ul li {
+  display: inline;
+  color: rgb(255, 210, 81);
+  font-family: Karla;
 }
 /*# sourceMappingURL=style.css.map */
