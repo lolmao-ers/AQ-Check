@@ -3,8 +3,6 @@ name: Frontend CI/CD
 on:
   push:
     branches: [ front-end ]
-  pull_request:
-    branches: [ front-end ]
   workflow_dispatch:
 
 jobs:
