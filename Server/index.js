@@ -44,15 +44,18 @@ let redisInstance;
 (async function keepTrying() {
     try {
         console.log("Connecting to MongoDB...");
-        await mongoose.connect(process.env.DB_CONNECTION_STRING);
+        const connectionString = `mongodb://${process.env.DB_CONNECTION_USERNAME}:${process.env.DB_CONNECTION_PASSWORD}@${process.env.DB_CONNECTION_HOSTNAME}:${process.env.DB_CONNECTION_PORT}/smog?authSource=admin`;
+        // console.log(connectionString);
+        await mongoose.connect(`mongodb://${process.env.DB_CONNECTION_USERNAME}:${process.env.DB_CONNECTION_PASSWORD}@${process.env.DB_CONNECTION_HOSTNAME}:${process.env.DB_CONNECTION_PORT}/smog?authSource=admin`);
         console.log("Connected to MongoDB");
     }
     catch {
         console.log("Could not connect to MongoDB");
+        keepTrying();
     }
 })();
 
-app.get('/api/v1/data', apiCache('60 minutes') , async function(req, res){
+app.get('/api/v1/data', apiCache('1 min'), async function(req, res){
     try{
 
         if(redisInstance !== null) {
@@ -75,6 +78,6 @@ app.get('/api/v1/data', apiCache('60 minutes') , async function(req, res){
     }
 })
 
-app.listen(process.env.PORT, () => {
-    console.log('Server is running on port ' + process.env.PORT);
+app.listen(8000, () => {
+    console.log('Server is running on port ' + 8000);
 })

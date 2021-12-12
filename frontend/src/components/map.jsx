@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import { scaleQuantile } from 'd3-scale';
 import ReactTooltip from 'react-tooltip';
@@ -44,23 +44,63 @@ const geographyStyle = {
     }
 };
 
+const obj = {
+    'Andhra Pradesh': 'AP',
+    'Arunachal Pradesh': 'AR',
+    'Assam': 'AS',
+    'Bihar': 'BR',
+    'Chhattisgarh': 'CT',
+    'Goa': 'GA',
+    'Gujarat': 'GJ',
+    'Haryana': 'HR',
+    'Himachal Pradesh': 'HP',
+    'Jharkhand': 'JH',
+    'Karnataka': 'KA',
+    'Kerala': 'KL',
+    'Madhya Pradesh': 'MP',
+    'Maharashtra': 'MH',
+    'Manipur': 'MN',
+    'Meghalaya': 'ML',
+    'Mizoram': 'MZ',
+    'Nagaland': 'NL',
+    'Odisha': 'OR',
+    'Punjab': 'PB',
+    'Rajasthan': 'RJ',
+    'Sikkim': 'SK',
+    'Tamil Nadu': 'TN',
+    'Telangana': 'TG',
+    'Tripura': 'TR',
+    'Uttarakhand': 'UT',
+    'Uttar Pradesh': 'UP',
+    'West Bengal': 'WB',
+    'AndamanandNicobarIslands': 'AN',
+    'Chandigarh': 'CH',
+    'Dadra and Nagar Haveli': 'DN',
+    'Daman and Diu': 'DD',
+    'Delhi': 'DL',
+    'Jammu and Kashmir': 'JK',
+    'Ladakh': 'LA',
+    'Lakshadweep': 'LD',
+    'Puducherry': 'PY'
+};
+
 // will generate random heatmap data on every call
 const getHeatMapData = () =>
 {
     return [
-        { id: 'AP', state: 'Andhra Pradesh', value: getRandomInt() },
-        { id: 'AR', state: 'Arunachal Pradesh', value: getRandomInt() },
-        { id: 'AS', state: 'Assam', value: getRandomInt() },
-        { id: 'BR', state: 'Bihar', value: getRandomInt() },
-        { id: 'CT', state: 'Chhattisgarh', value: getRandomInt() },
-        { id: 'GA', state: 'Goa', value: 21 },
-        { id: 'GJ', state: 'Gujarat', value: 22 },
-        { id: 'HR', state: 'Haryana', value: getRandomInt() },
+        { id: 'AP', state: 'Andhra Pradesh' },
+        { id: 'AR', state: 'Arunachal Pradesh' },
+        { id: 'AS', state: 'Assam' },
+        { id: 'BR', state: 'Bihar'},
+        { id: 'CT', state: 'Chhattisgarh'},
+        { id: 'GA', state: 'Goa' },
+        { id: 'GJ', state: 'Gujarat' },
+        { id: 'HR', state: 'Haryana' },
         { id: 'HP', state: 'Himachal Pradesh', value: 24 },
-        { id: 'JH', state: 'Jharkhand', value: 26 },
-        { id: 'KA', state: 'Karnataka', value: 27 },
-        { id: 'KL', state: 'Kerala', value: getRandomInt() },
-        { id: 'MP', state: 'Madhya Pradesh', value: getRandomInt() },
+        { id: 'JH', state: 'Jharkhand' },
+        { id: 'KA', state: 'Karnataka' },
+        { id: 'KL', state: 'Kerala',  },
+        { id: 'MP', state: 'Madhya Pradesh' },
         { id: 'MH', state: 'Maharashtra', value: getRandomInt() },
         { id: 'MN', state: 'Manipur', value: getRandomInt() },
         { id: 'ML', state: 'Meghalaya', value: 59 },
@@ -70,22 +110,22 @@ const getHeatMapData = () =>
         { id: 'PB', state: 'Punjab', value: getRandomInt() },
         { id: 'RJ', state: 'Rajasthan', value: getRandomInt() },
         { id: 'SK', state: 'Sikkim', value: getRandomInt() },
-        { id: 'TN', state: 'Tamil Nadu', value: getRandomInt() },
-        { id: 'TG', state: 'Telangana', value: getRandomInt() },
-        { id: 'TR', state: 'Tripura', value: 14 },
-        { id: 'UT', state: 'Uttarakhand', value: getRandomInt() },
-        { id: 'UP', state: 'Uttar Pradesh', value: 15 },
-        { id: 'WB', state: 'West Bengal', value: 17 },
-        { id: 'WB', state: 'West Bengal', value: 17 },
-        { id: 'AN', state: 'Andaman and Nicobar Islands', value: getRandomInt() },
-        { id: 'CH', state: 'Chandigarh', value: getRandomInt() },
-        { id: 'DN', state: 'Dadra and Nagar Haveli', value: 19 },
-        { id: 'DD', state: 'Daman and Diu', value: 20 },
-        { id: 'DL', state: 'Delhi', value: 59 },
-        { id: 'JK', state: 'Jammu and Kashmir', value: 25 },
-        { id: 'LA', state: 'Ladakh', value: getRandomInt() },
-        { id: 'LD', state: 'Lakshadweep', value: getRandomInt() },
-        { id: 'PY', state: 'Puducherry', value: getRandomInt() }
+        { id: 'TN', state: 'Tamil Nadu' },
+        { id: 'TG', state: 'Telangana' },
+        { id: 'TR', state: 'Tripura'},
+        { id: 'UT', state: 'Uttarakhand'},
+        { id: 'UP', state: 'Uttar Pradesh' },
+        { id: 'WB', state: 'West Bengal' },
+        { id: 'WB', state: 'West Bengal'},
+        { id: 'AN', state: 'Andaman and Nicobar Islands' },
+        { id: 'CH', state: 'Chandigarh' },
+        { id: 'DN', state: 'Dadra and Nagar Haveli' },
+        { id: 'DD', state: 'Daman and Diu' },
+        { id: 'DL', state: 'Delhi' },
+        { id: 'JK', state: 'Jammu and Kashmir' },
+        { id: 'LA', state: 'Ladakh' },
+        { id: 'LD', state: 'Lakshadweep'},
+        { id: 'PY', state: 'Puducherry'}
     ];
 };
 
@@ -94,14 +134,14 @@ export default function Example(props)
     const [tooltipContent, setTooltipContent] = useState('');
     const [data, setData] = useState(getHeatMapData());
 
-    const colorScale = scaleQuantile()
-        .domain(data.map(d => d.value))
-        .range(COLOR_RANGE);
+    // const colorScale = scaleQuantile()
+    //     .domain(props.cityList?.map(d => d.aqi))
+    //     .range(COLOR_RANGE);
 
-    const onMouseEnter = (geo, current = { value: 'NA' }) => {
+    const onMouseEnter = (geo, current = { aqi: 'NA' }) => {
         return () =>
         {
-            setTooltipContent(`${geo.properties.name}: ${current.value}`);
+            setTooltipContent(`${geo.properties.name}: ${parseInt(current.aqi)*5}`);
         };
     };
 
@@ -109,9 +149,58 @@ export default function Example(props)
         setTooltipContent('');
     };
 
+    var percentColors = [
+        { pct: 0.0, color: { r: 0xff, g: 0x00, b: 0 } },
+        { pct: 0.5, color: { r: 0xff, g: 0xff, b: 0 } },
+        { pct: 1.0, color: { r: 0x00, g: 0xff, b: 0 } } ];
+    
+    var getColorForPercentage = function(pct) {
+        // console.log(pct);
+        for (var i = 1; i < percentColors.length - 1; i++) {
+            if (pct < percentColors[i].pct) {
+                break;
+            }
+        }
+        var lower = percentColors[i - 1];
+        var upper = percentColors[i];
+        var range = upper.pct - lower.pct;
+        var rangePct = (pct - lower.pct) / range;
+        var pctLower = 1 - rangePct;
+        var pctUpper = rangePct;
+        var color = {
+            r: Math.floor(lower.color.r * pctLower + upper.color.r * pctUpper),
+            g: Math.floor(lower.color.g * pctLower + upper.color.g * pctUpper),
+            b: Math.floor(lower.color.b * pctLower + upper.color.b * pctUpper)
+        };
+        return 'rgb(' + [color.r, color.g, color.b].join(',') + ')';
+        // or output as hex if preferred
+    };
+
+    function setColor (aqi) {
+        if (aqi === 'NA') {
+            return DEFAULT_COLOR;
+        }
+        
+        if(aqi <= 50) {
+            return '#00ff00';
+        }
+
+        if(aqi <= 250) {
+            return '#FFA500';
+        }
+        
+        if(aqi <= 300) {
+            return '#FF0000';
+        }
+
+        return '#000000';
+    }
+
     function stateClicked(stateData) {
         if(!stateData) return;
-        props.openCityData(stateData.state);
+        // console.log(stateData);
+        // console.log('clicked')
+        props.openCityData(stateData.state, stateData);
     }
 
     return (
@@ -129,12 +218,13 @@ export default function Example(props)
                     {({ geographies }) =>
                         geographies.map(geo =>
                         {
-                            const current = data.find(s => s.id === geo.id);
+                            // console.log('this is prop', props.cityList);
+                            const current = props.cityList?.find(s => s.mapId === geo.id);
                             return (
                                 <Geography
                                     key={geo.rsmKey}
                                     geography={geo}
-                                    fill={current ? colorScale(current.value) : DEFAULT_COLOR}
+                                    fill={current ? getColorForPercentage(100 -current.aqi*5) : DEFAULT_COLOR}
                                     style={geographyStyle}
                                     onMouseEnter={onMouseEnter(geo, current)}
                                     onMouseLeave={onMouseLeave}
