@@ -21,21 +21,24 @@ jobs:
       - name: Install Datree
         run: curl https://get.datree.io | /bin/bash
         
+      - name: directory
+        run: ls
+
       - name: configmap
-        run: datree test ~/configmap.yaml
+        run: datree test ./configmap.yaml
 
       - name: mongo-service
-        run: datree test ~/mongodb-service.yaml
+        run: datree test ./mongodb-service.yaml
 
       - name: node-backend
-        run: datree test ~/node-backend.yaml
+        run: datree test ./node-backend.yaml
 
       - name: react
-        run: datree test ~/react.yaml
+        run: datree test ./react.yaml
         
       - name: redis-service
-        run: datree test ~/redis-service.yaml
+        run: datree test ./redis-service.yaml
 
       - name: twilio
-        run: datree test ~/twilio.yaml
+        run: datree test ./twilio.yaml
          
