@@ -3,14 +3,6 @@ import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 import { scaleQuantile } from 'd3-scale';
 import ReactTooltip from 'react-tooltip';
 
-import LinearGradient from './LinearGradient.js';
-// import './App.css';
-
-/**
-* Courtesy: https://rawgit.com/Anujarya300/bubble_maps/master/data/geography-data/india.topo.json
-* Looking topojson for other countries/world? 
-* Visit: https://github.com/markmarkoh/datamaps
-*/
 const INDIA_TOPO_JSON = require('./india.topo.json');
 
 const PROJECTION_CONFIG = {
@@ -97,44 +89,33 @@ const getHeatMapData = () =>
     ];
 };
 
-export default function Example()
+export default function Example(props)
 {
     const [tooltipContent, setTooltipContent] = useState('');
     const [data, setData] = useState(getHeatMapData());
-
-    const gradientData = {
-        fromColor: COLOR_RANGE[0],
-        toColor: COLOR_RANGE[COLOR_RANGE.length - 1],
-        min: 0,
-        max: data.reduce((max, item) => (item.value > max ? item.value : max), 0)
-    };
 
     const colorScale = scaleQuantile()
         .domain(data.map(d => d.value))
         .range(COLOR_RANGE);
 
-    const onMouseEnter = (geo, current = { value: 'NA' }) =>
-    {
+    const onMouseEnter = (geo, current = { value: 'NA' }) => {
         return () =>
         {
             setTooltipContent(`${geo.properties.name}: ${current.value}`);
         };
     };
 
-    const onMouseLeave = () =>
-    {
+    const onMouseLeave = () => {
         setTooltipContent('');
     };
 
-    const onChangeButtonClick = () =>
-    {
-        setData(getHeatMapData());
-    };
+    function stateClicked(stateData) {
+        if(!stateData) return;
+        props.openCityData(stateData.state);
+    }
 
     return (
-        // <div className="full-width-height container">
-    <div id='map' style={{width:"60vw"}}>
-            {/* <h1 className="no-margin center">States and UTs</h1> */}
+        <div id='map' style={{width:"60vw"}}>
             <ReactTooltip>{tooltipContent}</ReactTooltip>
             <ComposableMap
                 projectionConfig={PROJECTION_CONFIG}
@@ -148,7 +129,6 @@ export default function Example()
                     {({ geographies }) =>
                         geographies.map(geo =>
                         {
-                            //console.log(geo.id);
                             const current = data.find(s => s.id === geo.id);
                             return (
                                 <Geography
@@ -158,18 +138,13 @@ export default function Example()
                                     style={geographyStyle}
                                     onMouseEnter={onMouseEnter(geo, current)}
                                     onMouseLeave={onMouseLeave}
-                                    onClick={() => { console.log(current.state); }}
+                                    onClick={()=>stateClicked(current)}
                                 />
                             );
                         })
                     }
                 </Geographies>
             </ComposableMap>
-            {/* <LinearGradient data={gradientData} /> */}
-            <div className="center">
-            </div>
         </div>
     );
 }
-
-// export default App;

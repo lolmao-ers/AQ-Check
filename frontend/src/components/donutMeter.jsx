@@ -2,8 +2,6 @@ import React from "react";
 
 import "../styles/donut-meter.scss";
 
-const AQI_SCORE = 305;
-
 const DONUT_METER_COLORS = [
 	"rgb(0, 176, 80)",
 	"rgb(146, 208, 80)",
@@ -56,17 +54,17 @@ export default class DonutMeter extends React.Component
 	}
 	componentDidMount()
 	{
-		this.setMeterBGColorAndPercentage(AQI_SCORE);
+		this.setMeterBGColorAndPercentage(this.props.AQI_SCORE);
 	}
 	render()
 	{
 		return (
 			<div className="donut-meter-container">
-				<div className="donut-meter" data-value={AQI_SCORE}>
+				<div className="donut-meter" data-value={this.props.AQI_SCORE}>
 					<div className="donut-background"></div>
 					<div className="donut-foreground" ref={this.foreground}></div>
 					<div className="donut-center">
-						<span className="donut-meter-score">{AQI_SCORE}</span>
+						<span className="donut-meter-score">{this.props.AQI_SCORE}</span>
 					</div>
 				</div>
 				<div className="donut-meter-labels">
