@@ -2,7 +2,7 @@ const router = require('express').Router();
 const twilio = require('twilio');
 require('dotenv').config();
 const User = require('../models/model')
-const getUpdates = require('../../scripts/getupdates')
+const getUpdates = require('../models/getupdates')
 const City = require('../models/city')
 const accountSid = process.env.ACCOUNT_SID;
 const authToken = process.env.AUTH_TOKEN;
