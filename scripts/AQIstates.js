@@ -4,6 +4,12 @@ const ifElse = require('./calculateAQI')
 const AQI = require("./pollutantsModel");
 const fs = require('fs');
 
+(
+  async () => {
+      await AQI.deleteMany({});
+  }
+)();
+
 require('./db')
 
 let mainData = {};

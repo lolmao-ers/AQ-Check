@@ -1,10 +1,16 @@
 const mongoose = require('mongoose');
-const url = 'mongodb://localhost:27017/smog';
+require('dotenv').config();
 
-mongoose.connect(url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-  .then(() => console.log("Database is connected!"))
-  .catch((err) => console.log(err));
-
+(async function keepTrying() {
+  try {
+      console.log("Connecting to MongoDB...");
+      const connectionString = `mongodb://${process.env.DB_CONNECTION_USERNAME}:${process.env.DB_CONNECTION_PASSWORD}@${process.env.DB_CONNECTION_HOSTNAME}:${process.env.DB_CONNECTION_PORT}/smog?authSource=admin`;
+      // console.log(connectionString);
+      await mongoose.connect(`mongodb://${process.env.DB_CONNECTION_USERNAME}:${process.env.DB_CONNECTION_PASSWORD}@${process.env.DB_CONNECTION_HOSTNAME}:${process.env.DB_CONNECTION_PORT}/smog?authSource=admin`);
+      console.log("Connected to MongoDB");
+  }
+  catch {
+      console.log("Could not connect to MongoDB");
+      keepTrying();
+  }
+})();
