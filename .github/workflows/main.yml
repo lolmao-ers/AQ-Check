@@ -1,10 +1,10 @@
-name: Node.js CI
+name: Backend CI/CD
 
 on:
   push:
-    branches: [ main ]
+    branches: [ back-end ]
   pull_request:
-    branches: [ main ]
+    branches: [ back-end ]
 
 jobs:
   build:
@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [16.x]
+        node-version: [12.x, 14.x, 16.x]
 
     steps:
     - uses: actions/checkout@v2
