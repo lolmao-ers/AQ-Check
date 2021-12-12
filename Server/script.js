@@ -49,25 +49,25 @@ async function addMapIDS() {
         const cities = await city.find({});
         
         for(const city of cities) {
-            // let mapId = cityIds[city.state]
+            let mapId = cityIds[city.state]
 
-            // if(city.state === 'Jammu & Kashmir') {
-            //     mapId = 'JK'
-            // }
+            if(city.state === 'Jammu & Kashmir') {
+                mapId = 'JK'
+            }
 
-            // if(city.state === 'TamilNadu') {
-            //     mapId = 'TN'
-            // }
+            if(city.state === 'TamilNadu') {
+                mapId = 'TN'
+            }
 
-            // city.mapId = mapId;
+            city.mapId = mapId;
 
             // city['value'] = city.aqi;
 
-            console.log(city)
-            // await city.save();
+            // console.log(city)
+            await city.save();
             // console.log(city.value)
 
-            // console.log(mapId);
+            console.log(mapId);
         }
 
         process.exit();
@@ -80,7 +80,8 @@ async function addMapIDS() {
 (async function() {
     try {
         console.log('Connecting to database...');
-        await mongoose.connect(process.env.DB_CONNECTION_STRING);
+        const connectionString = `mongodb://${process.env.DB_CONNECTION_USERNAME}:${process.env.DB_CONNECTION_PASSWORD}@${process.env.DB_CONNECTION_HOSTNAME}:${process.env.DB_CONNECTION_PORT}/smog?authSource=admin`;
+        await mongoose.connect(connectionString);
         console.log('Connected to database.');
         addMapIDS();
     }
