@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: twilio
+  labels:
+    app: twilio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: twilio
+  template:
+    metadata:
+      labels:
+        app: twilio
+    spec:
+      containers:
+        - name: twilio
+          image: dhairyabahl/cloud-native-hackathon-twilio
+          ports:
+            - containerPort: 9000
+          env:
+            - name: ACCOUNT_SID
+              valueFrom:
+                secretKeyRef:
+                  key: account-sid
+                  name: twilio-secret
+            - name: AUTH_TOKEN
+              valueFrom:
+                secretKeyRef: 
+                  key: auth-token
+                  name: twilio-secret
+            - name: PORT
+              value: '9000'
+            - name: DB_CONNECTION_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: mongodb-secret
+            - name: DB_CONNECTION_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: mongodb-secret
+            - name: DB_CONNECTION_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  key: database_url
+                  name: mongodb-configmap
+            - name: DB_CONNECTION_PORT
+              value: '27017'
+            - name: URI
+              valueFrom:
+                configMapKeyRef:
+                  key: twilio-uri
+                  name: configmap-react-twilio
+                
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: twilio-service
+spec:
+  selector:
+    app: twilio
+  type: LoadBalancer
+  ports:
+    - port: 9000
+      targetPort: 9000
+      protocol: TCP
+      nodePort: 30303

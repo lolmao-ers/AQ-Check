@@ -1,0 +1,39 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  data:
+    ca.crt: |
+      -----BEGIN CERTIFICATE-----
+      MIIBdzCCAR2gAwIBAgIBADAKBggqhkjOPQQDAjAjMSEwHwYDVQQDDBhrM3Mtc2Vy
+      dmVyLWNhQDE2MzkxNTE2MzUwHhcNMjExMjEwMTU1MzU1WhcNMzExMjA4MTU1MzU1
+      WjAjMSEwHwYDVQQDDBhrM3Mtc2VydmVyLWNhQDE2MzkxNTE2MzUwWTATBgcqhkjO
+      PQIBBggqhkjOPQMBBwNCAAQd+uk30qV39HQGfqaGTu00XEmKzcDMivLfJihd6B0x
+      4JxumQzuL16yhAmV18FbDrNVdcsyQGmlx9GO9ChaF6quo0IwQDAOBgNVHQ8BAf8E
+      BAMCAqQwDwYDVR0TAQH/BAUwAwEB/zAdBgNVHQ4EFgQU8w2C4SKAdutkIE4o+n/C
+      uE8l2lYwCgYIKoZIzj0EAwIDSAAwRQIgK0DziMbORZ4w7oR4Mu+9N37mirlzrhtc
+      FPymPceZhgMCIQDp5/wtbjYzpxmwN972hpE1C0k3X+iJeAPGV9xDZ1JG9g==
+      -----END CERTIFICATE-----
+  kind: ConfigMap
+  metadata:
+    creationTimestamp: "2021-12-10T15:54:18Z"
+    name: kube-root-ca.crt
+    namespace: default
+    resourceVersion: "382"
+    uid: 7cbd5f38-b04e-457d-ad89-34d70904b0ed
+- apiVersion: v1
+  data:
+    database_url: mongodb
+  kind: ConfigMap
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","data":{"database_url":"mongodb"},"kind":"ConfigMap","metadata":{"annotations":{},"name":"mongodb-configmap","namespace":"default"}}
+    creationTimestamp: "2021-12-11T13:16:59Z"
+    name: mongodb-configmap
+    namespace: default
+    resourceVersion: "54104"
+    uid: f2e7c560-4583-4b86-bff2-89633f324892
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""

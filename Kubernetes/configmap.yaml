@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap-react-twilio
+data:
+  react_app_hostname: 212.2.245.147
+  twilio-uri: https://api.airvisual.com/v2/city?city=Pitampura&state=Delhi&country=India&key=1d897fcb-d675-4056-a502-c1ec0149a372

@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-app
+  labels:
+    app: react-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: react-app
+  template:
+    metadata:
+      labels:
+        app: react-app
+    spec:
+      containers:
+        - name: react-app
+          image: dhairyabahl/cloud-native-hackathon-react-frontend
+          ports:
+            - containerPort: 3000
+          env:
+            - name: BROWSER
+              value: 'none'
+            - name: REACT_APP_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  key: react_app_hostname
+                  name: configmap-react-twilio
+            - name: REACT_APP_PORT
+              value: '30564'
+                
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-service
+spec:
+  selector:
+    app: react-app
+  type: LoadBalancer
+  ports:
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
+      nodePort: 30025
