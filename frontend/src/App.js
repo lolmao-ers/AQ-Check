@@ -12,15 +12,17 @@ class App extends React.Component {
 		super(props);
 		this.state = {
 				title: DEFAULT_TITLE,
+				currCityData: null
 		};
 		this.openCityData = this.openCityData.bind(this);
 		this.openCityList = this.openCityList.bind(this);
 	}
 
-	openCityData(cityName) {
-		console.log(cityName)
+	openCityData(cityName, cityData) {
+		console.log(cityData);
 		this.setState({
 			title: cityName,
+			currCityData: cityData
 		});
 	}
 
@@ -33,7 +35,7 @@ class App extends React.Component {
   	render() {
     	return (
 			<div className="App">
-				<LeftContainer title = {this.state.title} openCityData = {this.openCityData} openCityList = {this.openCityList}/>
+				<LeftContainer cityData = {this.state.currCityData} title = {this.state.title} openCityData = {this.openCityData} openCityList = {this.openCityList}/>
 				<Example openCityData = {this.openCityData} />
 			</div>
 		)

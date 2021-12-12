@@ -1,14 +1,13 @@
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-
+import axios from "axios";
 import "../styles/box-container.css";
 import "../styles/left-container.scss";
 import CityData from "./cityData";
 import CityList from "./cityList";
 
-const Title = (props) =>
-{
+const Title = (props) => {
 	return <span id="title">{props.title}</span>;
 };
 
@@ -25,21 +24,40 @@ const BackButton = ({ onClick, className }) =>
 const DEFAULT_TITLE = "AQI Levels";
 
 export default class LeftContainer extends React.Component {
-	render()
-	{
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			cityList: null
+		}
+		this.getCityList = this.getCityList.bind(this);
+	}
+
+	async getCityList() {
+		const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/data`);
+		this.setState({
+			cityList: response.data
+		});
+	}
+
+	componentDidMount() {
+		this.getCityList();
+	}
+
+	render() {
 		return (
 			<div id="left-container" className="box-container">
 				<div id="left-container-header">
 					<BackButton className={this.props.title === DEFAULT_TITLE ? "hide" : ""} onClick={this.props.openCityList} />
 					<Title title={this.props.title} />
-					<div className="header-buttons"></div>	{/* <SearchBar/> */}
+					<div className="header-buttons"></div>
 				</div>
 				<hr />
 
 				{this.props.title === DEFAULT_TITLE ? (
-					<CityList openCityData={this.props.openCityData} />
+					<CityList cityList = {this.state.cityList} openCityData={this.props.openCityData} />
 				) : (
-					<CityData cityName={this.props.title} />
+					<CityData cityName={this.props.title} cityData={this.props.cityData} />
 				)}
 			</div>
 		);
