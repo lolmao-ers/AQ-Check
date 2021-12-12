@@ -20,7 +20,7 @@ export default class DonutMeter extends React.Component
 	}
 	setMeterBGColorAndPercentage(score)
 	{
-		const percentage = Math.round(score / 5); // score/500 * 100
+		const percentage = Math.round(score/5); // score/500 * 100
 		const angleOfRotation = 1.8 * percentage;
 
 		let meterColor;
@@ -52,19 +52,18 @@ export default class DonutMeter extends React.Component
 		this.foreground.current.style.backgroundColor = meterColor;
 		this.foreground.current.style.transform = `rotate(${-180 + angleOfRotation}deg)`;
 	}
-	componentDidMount()
-	{
-		this.setMeterBGColorAndPercentage(this.props.AQI_SCORE);
+	componentDidMount() {
+		this.setMeterBGColorAndPercentage(this.props.AQI_SCORE*5);
 	}
 	render()
 	{
 		return (
 			<div className="donut-meter-container">
-				<div className="donut-meter" data-value={this.props.AQI_SCORE}>
+				<div className="donut-meter" data-value={500}>
 					<div className="donut-background"></div>
 					<div className="donut-foreground" ref={this.foreground}></div>
 					<div className="donut-center">
-						<span className="donut-meter-score">{this.props.AQI_SCORE}</span>
+						<span className="donut-meter-score">{this.props.AQI_SCORE*5}</span>
 					</div>
 				</div>
 				<div className="donut-meter-labels">

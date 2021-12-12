@@ -19,7 +19,7 @@ export default class CityList extends React.Component {
 			<tr className="city-list-tile" key = {key} onClick={() => { this.clickedCityTile(cityName,cityData ) }}>
 				<tr className="city-tile-data">
 					<td className="city-name">{cityName}</td>
-					<td className="aqi-score">{aqiScore}</td>
+					<td className="aqi-score">{aqiScore*5}</td>
 				</tr>
 				<FontAwesomeIcon
 					icon={faChevronRight}

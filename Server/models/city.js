@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const citySchema = new mongoose.Schema({
     state: { type: String, required: true },
-    city: { type: String, required: true },
+    city: { type: String },
+    mapId: { type: String,},
     aqi: {type: String, required: true},
     pm25: {type: String, required: true},
     pm25min: {type: String, required: true},

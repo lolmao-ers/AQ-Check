@@ -27,21 +27,10 @@ export default class LeftContainer extends React.Component {
 
 	constructor(props) {
 		super(props);
-		this.state = {
-			cityList: null
-		}
-		this.getCityList = this.getCityList.bind(this);
-	}
-
-	async getCityList() {
-		const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/v1/data`);
-		this.setState({
-			cityList: response.data
-		});
 	}
 
 	componentDidMount() {
-		this.getCityList();
+		
 	}
 
 	render() {
@@ -55,7 +44,7 @@ export default class LeftContainer extends React.Component {
 				<hr />
 
 				{this.props.title === DEFAULT_TITLE ? (
-					<CityList cityList = {this.state.cityList} openCityData={this.props.openCityData} />
+					<CityList cityList = {this.props.cityList} openCityData={this.props.openCityData} />
 				) : (
 					<CityData cityName={this.props.title} cityData={this.props.cityData} />
 				)}
