@@ -1,10 +1,10 @@
-name: Backend CI/CD
+name: Frontend CI/CD
 
 on:
   push:
-    branches: [ back-end ]
+    branches: [ front-end ]
   pull_request:
-    branches: [ back-end ]
+    branches: [ front-end ]
   workflow_dispatch:
 
 jobs:
@@ -14,13 +14,16 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [16.x]
 
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    
+    - name: Setting the environment
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: ls
+        
+    - name: Testing the working
+      run: ls
