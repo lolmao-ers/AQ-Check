@@ -25,7 +25,7 @@ router.post('/recieve',  async (req, res) => {
          twiml.message(`Hello ${name}!, To get your air quality, send your location.`);
      }
 
-     else if(messageBody.toLowerCase() === process.env.location) {
+     else if(messageBody.toLowerCase() === messageBody) {
              await request(options, async function(error, response, body) {
                 if(error){
                     console.log(error);
@@ -37,7 +37,7 @@ router.post('/recieve',  async (req, res) => {
                 console.log(pollutants.data.current.pollution.aqius);
             });
      }
-     
+
      res.set('Content-Type', 'text/xml');
      res.status(201).send(twiml.toString());
 })
