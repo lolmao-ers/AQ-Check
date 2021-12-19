@@ -14,7 +14,7 @@ const { findLocation, checkLocation } = require('../functions/find-location');
 const accountSid = process.env.ACCOUNT_SID;
 const authToken = process.env.AUTH_TOKEN;
 
-let scam = {};
+let scam = [];
 
 
 twilio(accountSid, authToken);
@@ -64,7 +64,7 @@ router.post('/recieve',  async (req, res) => {
                 
                   let Data = getUpdates(data);
                   
-                  scam = { ...Data };
+                  scam.push(Data);
                   messageBody = changeCapitalisation(messageBody);
                   twiml.message(`The aqi is ${Data.aqi} for ${messageBody}. The PM25 PM10 and Ozone level are ${Data.pm25}, ${Data.pm10} and ${Data.o3}. If you want to know more type "/more"`);
              }
@@ -79,12 +79,12 @@ router.post('/recieve',  async (req, res) => {
      }
 
      else if(messageBody.toLowerCase().trim() === '/more') {
-         if(scam){
-            twiml.message(`pm25: ${scam.pm25} pm10: ${scam.pm10} o3: ${scam.o3} so2: ${scam.so2} no2: ${scam.no2} pm25min: ${scam.pm25min} pm25max: ${scam.pm25max} pm10min: ${scam.pm10min} pm10max: ${scam.pm10max} so2min: ${scam.so2min} so2max: ${scam.so2max} no2min: ${scam.no2min} no2max: ${scam.no2max})`); 
-            scam.shift; 
+         if(scam[0]){
+            twiml.message(`pm25: ${scam[0].pm25} pm10: ${scam[0].pm10} o3: ${scam[0].o3} so2: ${scam[0].so2} no2: ${scam[0].no2} pm25min: ${scam[0].pm25min} pm25max: ${scam[0].pm25max} pm10min: ${scam[0].pm10min} pm10max: ${scam[0].pm10max} so2min: ${scam[0].so2min} so2max: ${scam[0].so2max} no2min: ${scam[0].no2min} no2max: ${scam[0].no2max})`); 
+            scam.shift();
          }
          else{
-            twiml.message('First, enter location');
+            twiml.message('Please enter your location first!');
          }
      }
 
