@@ -57,4 +57,4 @@ Our project aims to set up Arduino based devices with various air quality sensor
 
 - For testing purposes, we setup one device in Rohini, New Delhi which provides us realtime data for the locality. The rest of the data is dummy data scraped from the web. However, the actual project would consist of these devices being setup in each locality to provide real-time data.
   
-- Another feature to be implemented implement will use location tracking to provide data from the nearest sensor automatically.
+- Another feature to be implemented that will use location tracking to provide data from the nearest sensor automatically.
