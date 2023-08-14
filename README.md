@@ -2,6 +2,8 @@
 
 A Project to collect real-time air quality data from all over India.
 
+[![Everything Is AWESOME](https://img.youtube.com/vi/StTqXEQ2l-Y/0.jpg)](https://www.youtube.com/watch?v=StTqXEQ2l-Y "Everything Is AWESOME")
+
 # Why do we need it?
 
 Pollution is a serious issue in cities such as New Delhi, and precise air quality data over small regions is a necessity.
