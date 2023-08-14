@@ -12,7 +12,11 @@ A Project to collect real-time air quality data from all over India.
 ### Getting Air Quality on WhatsApp
 <img width="300dp" src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/001/770/325/datas/gallery.jpg" alt="Getting the pollution data directly through WhatsApp"/> <img width="300dp" src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/001/770/339/datas/original.jpeg" alt="Getting the pollution data directly through WhatsApp"/>
 ### Arduino Setup
-<img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/001/770/329/datas/gallery.jpg" alt="Arduino setup"/> <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/001/770/326/datas/gallery.jpg" alt="Arduino setup"/>
+<img widht = "300dp" src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/001/770/329/datas/gallery.jpg" alt="Arduino setup"/> <img widht = "300dp" src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/001/770/326/datas/gallery.jpg" alt="Arduino setup"/>
+
+### Kubernetes Resources
+
+<img widht = "300dp" src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/001/770/469/datas/gallery.jpg" alt="K8S"/> 
 
 
 # Why do we need it?
