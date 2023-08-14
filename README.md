@@ -2,8 +2,14 @@
 
 A Project to collect real-time air quality data from all over India.
 
+## Proof of Concept Video
+
 [![Everything Is AWESOME](https://i.imgur.com/yRVlPuz.png
 )](https://www.youtube.com/watch?v=CponiMqZM_o "Everything Is AWESOME")
+
+## Image Gallery
+
+<img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/001/770/325/datas/gallery.jpg" />
 
 # Why do we need it?
 
