@@ -9,7 +9,9 @@ A Project to collect real-time air quality data from all over India.
 
 ## Image Gallery
 
-<img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/001/770/325/datas/gallery.jpg" />
+<img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/001/770/325/datas/gallery.jpg" alt="Getting the pollution data directly through WhatsApp"/>
+<img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/001/770/326/datas/original.jpeg" alt="Arduino setup"/>
+
 
 # Why do we need it?
 
