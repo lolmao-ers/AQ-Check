@@ -2,7 +2,7 @@
 
 A Project to collect real-time air quality data from all over India.
 
-[![Everything Is AWESOME](https://img.youtube.com/vi/StTqXEQ2l-Y/0.jpg)](https://www.youtube.com/watch?v=StTqXEQ2l-Y "Everything Is AWESOME")
+[![Everything Is AWESOME]([https://img.youtube.com/vi/StTqXEQ2l-Y/0.jpg](https://i.imgur.com/yRVlPuz.png))](https://www.youtube.com/watch?v=StTqXEQ2l-Y "Everything Is AWESOME")
 
 # Why do we need it?
 
